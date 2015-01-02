@@ -2,3 +2,4 @@
 .idea/*
 .envrc
 vagrant/*/.vagrant/*
+vagrant/.vagrant/*
