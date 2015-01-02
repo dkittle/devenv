@@ -2,7 +2,7 @@
 - hosts: all
   sudo: yes
   roles:
-#    - common
+    - common
     - swap
     - java
 #    - tomcat

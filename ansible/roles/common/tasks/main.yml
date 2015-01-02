@@ -5,11 +5,10 @@
 - include: ntp.yml
 - include: awscli.yml
 
-- name: install unzip
-  apt: pkg=unzip state=installed
+- name: Install required common packages
+  apt: name={{ item }} state=latest
+  with_items:
+    - unzip
+    - curl
+    - php5-curl
 
-  - name: install curl
-  apt: pkg=curl state=installed
-
-- name: install php5-curl
-  apt: pkg=php5-curl state=installed
