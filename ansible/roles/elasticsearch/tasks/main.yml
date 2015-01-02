@@ -1,0 +1,26 @@
+---
+# file: roles/elasticsearch/tasks/main.yml
+- name: ensure python-software-properties is installed
+  apt: pkg=python-software-properties state=installed
+
+- name: add elasticsearch public key
+  apt_key: url=http://packages.elasticsearch.org/GPG-KEY-elasticsearch state=present
+
+- name: add elasticsearch official apt repository
+  apt_repository: repo='deb http://packages.elasticsearch.org/elasticsearch/1.4/debian stable main' state=present
+
+- name: update apt
+  apt: update_cache=yes
+
+- name: install elasticsearch
+  apt: pkg=elasticsearch state=installed force=yes
+
+- name: add elasticsearch process to startup script
+  command: update-rc.d elasticsearch defaults 95 10
+  sudo: yes
+  sudo_user: root
+
+- name: restart elasticsearch
+  service: name=elasticsearch state=restarted
+
+- shell: plugin -i mobz/elasticsearch-head chdir=/usr/share/elasticsearch/bin/

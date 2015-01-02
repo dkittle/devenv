@@ -1,0 +1,5 @@
+---
+# file: roles/elasticsearch/handlers/main.yml
+- name: restart elastic search
+  sudo: yes
+  service: name=elasticsearch state=restarted

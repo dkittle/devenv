@@ -1,0 +1,15 @@
+---
+- include: apt.yml
+- include: sudo.yml
+- include: users.yml
+- include: ntp.yml
+- include: awscli.yml
+
+- name: install unzip
+  apt: pkg=unzip state=installed
+
+  - name: install curl
+  apt: pkg=curl state=installed
+
+- name: install php5-curl
+  apt: pkg=php5-curl state=installed

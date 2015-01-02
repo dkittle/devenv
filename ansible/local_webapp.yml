@@ -1,0 +1,14 @@
+---
+- hosts: all
+  sudo: yes
+  roles:
+#    - common
+    - swap
+    - java
+#    - tomcat
+#    - rabbitmq
+    - elasticsearch
+    - mysql
+    - redis
+  vars:
+    swap_size_gb: 4

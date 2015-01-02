@@ -1,0 +1,68 @@
+---
+# file: roles/common/tasks/users.yml
+
+# don
+- name: add user don
+  user: name=don comment="Don Kittle" groups=admin,staff,root append=yes shell=/bin/bash
+- name: add authorized key don
+  authorized_key: user=don key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAy7SuRYhAM4CSy0XsVCPCBLFWqYPU2o6C97jlmgicLMQ3igdcoTUU6As1UsE7J05nILlZlv1V+912I+o68XJxRkqxWJSMQ4cwHIuI19d+iWir30nGmPMBxtFQZhaMT/EwbEqJ8c9PIkdTrGslurX4K9fjVV14sM1CNQnfq6Vo1jCZ09mRZf4O3d9fCfKP/brgkWK+xlu7oxK+IiEBoA87T+Hnizt4RVtNDyzYPThdrOsAp7+NqSa7IzGYh0ec2nO6Yj4kS3sd6BVZ5u2ezww10hVoIlP1HIP8++6BuTLoAWouT6wv4ul0UXQ5UclPlAkrHfMqJd2kOsYI7ERYmncrJw=="
+
+# sean
+- name: add user sean
+  user: name=sean comment="Sean Miller" groups=admin append=yes shell=/bin/bash
+- name: add authorized key sean
+  authorized_key: user=sean key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1cdi05KOaWbSxvS2CGwIK1u1jwtZDnDmhWlC8LxkXgIksyTlTGL2H3HDpRZhMKi+NGXzKN76KMenLp/PQyrfJcTZRv9q5cbvOYJINcXlnpm8fdZd37tHdjLNv8KJsvl9m+bdxa9IXyy7V+ViCwKqAjgSrggcJFhfp7mFSOep9xNp4v4dYJNd88jiMvg95lq78GpsOdt1xC5aXQggWdyrkhQ0UbTp9k4vTK8iuzSSILrv3jpwGX2ITUBLkSRB4EyhgV2YDtKRCag993oIO24VsTnSVBdV9BThBd3CxRNWSWTE4DS/qQXJu/qzaVs0I3FaXYwOVbvDNKh1lSm6m5V6r"
+
+# sina
+- name: add user sina
+  user: name=sina comment="Sina Jahan" groups=admin append=yes shell=/bin/bash
+- name: add authorized key sina
+  authorized_key: user=sina key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxWhDT3fOaTvqAQfDTb6s2K5cphqxCsxDvxx+K1PA2CzX8d8U4KulN82lpxijd4dXgAhlW/O0St6FuYUDcTucxxXOzdRe+U5tkodrfAEiQnUz5QLjNXJK7YdsGC40CSLbefXc6j2NunRaHqPeAWQ3vGw1B8WGTinvlis4Q20M9BNGEHrU1/pk2uFROs/NZghEOq14fxfdA/ks6IRJY+KMLzOW9Ccw/t7gm1VVHztjIJ0aAFHIomgL2umKNX+sXR6MEUlXd19oHOPq9DKoTXlhhga7XrGQ2URyZaUMTgITzA7odJWj6FuP6N1Gmb7j1RTOq+mIQVWi/vB0j7U5nhTWb"
+
+# joe
+- name: add user joe
+  user: name=joe comment="Joe Drew" groups=admin append=yes shell=/bin/bash
+- name: add authorized key joe
+  authorized_key: user=joe key="ssh-rsa AAAAB3NzaC1kc3MAAACBAKlipXUSrW3XAS7ghsMJX5oNY7QA6399N1+RyKEGy1wfHHijLcfIaMMoAQN/h0MtDr7L5AAgpwJIdGsEcnl9uU1V28qB6hMQWhz1uIc8+cRTMMseFVyhfJ5eVwGGBU+8BgC1ZYC3KhJY/6SXa5kc6UfQmPZDDJ1yzGjV2Ky4y7jHAAAAFQDD/arxUxPbxNy7L8pYfGBq6i8IWQAAAIA32bStMxpqNsxwBxsgPES402M0dl5lfn9TKveI3LgN7NtHoEtUeVoKn1NggsxmG0sSx/zWrCeGUKLLSQTjMgNJ5KqRIHc5korNv7E1l/xKY0mfPSl7JHHfShbX8f/vE464d9j2CbT6GSXWiI9tn/aplWhcte0fXVhS49O+sC/E0QAAAIA+mWCafCnJICa8m7Czbr4MM7/s8wlgR+4OBeQCB3gWZq9HQLb5mMaL/Kzr7pnJiiz9gw+VgXAvjBSL9Rzs7rS+tcg7ZFeVSUlJYG8xq6gRVeYD8VFpfa1yOW49VOh3VrzeYYv7bDhtLHqb6pC0TgEpnZroVS44pYGNgD+Xb/OCNA=="
+
+# alan
+- name: add user alan
+  user: name=alan comment="Alan Cerclier" groups=admin append=yes shell=/bin/bash
+- name: add authorized key alan
+  authorized_key: user=alan key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD77pMMzgw2rehGGq10xeDs7NijdyHQzHzOuwwgs4IAaq+Ex3Xc3qWk25uEEC26OCk+nHoabnTY4+omDcVw0vOpYFK8DBFvhYKmFib5GAAy908JgwpXgxcedspz3/zQUaALc18SpiAkb7XDecscL2m01oSMTPv4rrI1HxRYs62HFzRW3gqeEfjH8rGUsmhhg/49UhpOh7ZQEktsoHMWr8i/xiuWOkemXAZZa/Lre6bAlpKzwuecYrBD7DVfVltPjucs45NEp/OKrVJ4euAiH2dT93+SP7WgGy9TipTTNsgdya/Icf5Ym+drdCKW+7+5wrRkcU9mtCV2NLt/HAM8sDiH"
+
+# izzat
+- name: add user izzat
+  user: name=izzat comment="Izzat Bamieh" groups=admin append=yes shell=/bin/bash
+- name: add authorized key izzat
+  authorized_key: user=izzat key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD2PyKlr6122cfPPigPhUaXhYkG/7n9eDHtrVun1oDDtNMMhfSEgcIAkYw/re6gcx5AYeryK9XZQgXFAYU9SXZR+6RVkJq13LOTog74Xnty6R7uCT2la3XCA4QWY5PDicbUDGOk01UCQWEwH3Kk3p9qXukQsAF3mMxn78BMGWVALm89X8YsfU+Em/Uh0KAbo77LbINrxcy25/9NMH1DJvEME8FVqCjEI4AXPsxkWd54P3XQIsxNHiKmesfilfAajXUYxxaegRn/1r+itv/ebJdZzLGYhvlakEctaaJfPtsMNS5mE7nq/q4WqQexnTFqOwZ5beq6hFc2L9WsY5GYysfF"
+
+# kelly
+- name: add user kelly
+  user: name=kelly comment="Kelly Zhang" groups=admin append=yes shell=/bin/bash
+- name: add authorized key kelly
+  authorized_key: user=kelly key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDdvgGcXtLEwucbdh13PKTUxZJ6o9REypHkuGbofV+4ojZTLLsmuMm4mtwSFtuS05DTNoiA4bI8d1LuW62mYN4GuXiM2gK4ce1apNSokceqKMJ5t5Y4a6FvfCW3UoC07sg7jNfKVDoRU2UV1IhNAwLgaEtVhgP3YYxLZqYK2RiUPLysRm3USobL51rMadvVmr2kKTbYpjmF6M7xnLKkCXqu60ASKwSCRqEhUr5lTpzvvXinHqjytQaHMreyR8y8a33A1ZkG0fzhBF7iisDXBxonUIiIh+kI4zeZcd73IKHzbQxvbfXxHnIpn3UaEXd422Fc94BYKOc+HG+MaWN+Vn87"
+
+# telm
+- name: add user telm
+  user: name=telm comment="Telm Perez" groups=admin append=yes shell=/bin/bash
+- name: add authorized key telm
+  authorized_key: user=telm key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQDihz85ZZn2LzMYGTIwOf7jLlbpdb0TmEjJaRoYjCj2ebhpWaVXWOFaIXEhtvGmOmNgNR7o+8rejDP25W2HWW+O1fvWG5vR2kO/6CXMIudH5NEGJ3God139fIANIa8tImVbdlv+mD0PghGk4eLglYxhrL90UeZjji9dM6p7TG6zO1+re2Phdluw5Rnh/S7PxJ4L12YZ0X3Lbe2Gb40BE890XtES0pmFuKDJNLvrKkxo0nJn3UWEWFu6TWdZLHyGiZOTn+vIBHwv7HG8fIJ4Lqwm3dtqQxqSrLxRdZK4E88tJwnkqrIU4X05RqAenuMVWFfjLzlsx99s8rLNEWbZkDvCZFSYEfqGFstxhFWYbsC+03iHu7ZVfsEsYe8jC9AlDFPqhST14GF5NYwG0k7N+pwiM7lQ2o0lqbZGlHZDhpg8X7u17UjoZYs83KmJwqTI0PJKbwaQcXi1IVFzmtK5tPRqU3CK4UbAYkVal/dT7R7p6SoRh76K5jr2kY3v1jESZb6ai83eU8iUbs6D5l8l/Bew4MOjKOJNviQ38at0ffDvM2tGXpcN4YGGRIZ51E7MuXbgIA6DFliXi/Y7J/1Yew3Joku3hBuXfSUc0qZT2npnMvVVS538cVcbZwp+Ly56X/zSuP3FquTpS+Nws9DXxAr3/luuA2P6/JYokeBnfoFfuWJtkPT7nO2rEfTO3Y/SVbnjKlXqYq92tD0Fo/wsbqIFCpGTats0KJTJ93nhBk+WOhoFyCzPEkxSTCiAh5NSM9jNgW+RCawke9LphKAGmJ7P3im6J+Q60hwYFpMUp0N21MXHJdZrUOXJDswh90FYK8Oz2ogXfRPRufGFQVhCsZCMMVl5FJu5Z9fC59fjFbkmfRmGhSGr2Jof6d7+8V2EFSfVt1W4WvHUY7btct5oCJ7/Y2rfdtGpYBtfZZj9gQY11t332BWzGVaxfATj4XmG2BRzVNWPIZFJikaN5aPoQcMB+8nauceIKcVMrJQ72BGOBBaRKy2W2uULk1ZDX8t6db6J73hXBFXoVk6MQ6EleoZEIJNn/h5nJka4FbGUa4STuIy3ypa8il5vrHNCEyCEM62h35KJ86fplsyRp1WmEALE8aHQAg7lLs7bCm//UKTwMxCo9AigAYd1KBWOHPWMFumDFUijOIK7AxSZ/OMn86OxaL4lQ+YQbockzQzukAHtPwUseZpeduhLHCj5SK2fgz/Hhb75FvkI46xeh2djCMkJ0OHaGW0Deu6OFTzLmM9dqyTAGMmwmaza82dsTZOZEsnMmRPwHd1ykXBGONIj01GH0purgAlq65vJE4c7VC/GGMfGkXo6raemDmFqHz7T8jUYT2FVtq+e4gXtgR3H/VrT"
+
+# martin
+- name: add user martin
+  user: name=martin comment="Martin Crawford" groups=admin append=yes shell=/bin/bash
+- name: add authorized key martin
+  authorized_key: user=martin key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDS6EGdQiuaHcOqGta75nZyYuAqBAVnKc26d5XqWOkg6ql7qOPHUj0PYDt3GXTaXGJTwSJvY/6BWt/cRB+RUzjjxbmL6xmTbMvi0an23wa0xDoUOvJdd5R2TFf2i+PcIIKVFmEHqjT+EvPxMfKh4100lSiUEIhYMYo/REK1el7d+GjIzIQBM6Te4Dq+c/0MKMFpRHRQvFIm4A0mL550qJ5VqxE0MMzGHtBVawbPIZtwyAKJgISiici958VkfuC/G8Uuhhl/2LFZewbzl1qJq1OAo2kNyk6XfDXARJbw/B7Ku4cPMNy148av4R5DZhAnALgc+Ld2sTKB+GY1Ipllp9mp"
+
+# paulbuen
+- name: add user paulbuen
+  user: name=paulbuen comment="Paul Buen" groups=admin append=yes shell=/bin/bash
+- name: add authorized key paulbuen
+  authorized_key: user=paulbuen key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDqeQE6yTEThdoViOjQo2LtATW5UbiihnRwCQ+rS+g9GP44Kc4yKrlrhPRCJEN400hJH48qfr1J5WYbT9uGoFdC8yIbAuQtBrh6IfqhkYsa99ejArHR1c/n2NroeRBi2PBdQCMYO97ywL8QWeW9HncaUovdYbDHu7F25kDdjgaWj13917nZ5cWMZWxzlcOFNOksnA52f1tZ4G1RB6nqQEfZFyZQlicvTulXiFyDg9rOMraYm7AFMYbw7GtmpIwEzZ4US6ViGXT8EwEjDIUznVF7qrU9twjzZyLClr0qNMYMdQByFpwU6OcY9FhC7dV2q4cGNrPOR3JDn5H6/tbd0+zX"
+
+# dan
+- name: add user dan
+  user: name=dan comment="Dan Roncadin" groups=admin append=yes shell=/bin/bash
+- name: add authorized key dan
+  authorized_key: user=dan key="ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA8sC/lKEWeAIMUWzdha5d9J7hAdWKdjFUR/pbajbCzsc0fnA0ipdU2pBF6ZETOakcZTNgNJCI8fA+Di0NT4Ex/yXchZIqjkvVkn3Czz+PF0nguv4uX/mcrM5oFUI3ivHsUh5CrVz7rSIdeN53FYDMLUKk6smZ+84yUKwVT4uJ3fxeKoa7k72dspDsWo3DV39xctSXEg1lcoFTkA+pjaTzsTANAnz12Px+V7Q4wumTndJhHtCitsmte7M5NCfbnLwqpLeBKLJAiLOs/HCAROXCi1tBg+uUglFx3KZkzCs17Vy0gSDybrRqbBanqTOIsUUhN8S20OuPUhKIWRh09CA6hQ== dan@DPRMacbookPro15i7.local"

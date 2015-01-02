@@ -1,0 +1,107 @@
+---
+
+- include_vars: vars.yml
+
+- name: create /opt/ssl directory
+  file: path=/opt/ssl state=directory owner=root group=root
+
+- name: copy star_clearfit_com.crt
+  template: src=star_clearfit_com.crt dest=/opt/ssl/star_clearfit_com.crt owner=root group=root mode=0600
+- name: copy star_clearfit_com.key
+  template: src=star_clearfit_com.key dest=/opt/ssl/star_clearfit_com.key owner=root group=root mode=0600
+
+- name: install apache2
+  apt: pkg=apache2 state=installed
+
+- name: enable apache mods
+  command: a2enmod proxy proxy_http ssl
+  sudo: yes
+  sudo_user: root
+
+- name: remove default apache config file
+  file: name=/etc/apache2/sites-enabled/000-default.conf state=absent
+
+- name: copy 000-ssl.conf
+  copy: src=000-ssl.conf dest=/etc/apache2/sites-enabled/000-ssl.conf owner=root group=root mode=0644
+
+- name: copy 001-clearfit.conf
+  copy: src=001-clearfit.conf dest=/etc/apache2/sites-enabled/001-clearfit.conf owner=root group=root mode=0644
+
+- name: restart apache
+  command: /etc/init.d/apache2 restart
+  sudo: yes
+  sudo_user: root
+
+- name: install libedit-dev
+  apt: pkg=libedit-dev state=installed
+
+- name: install varnish via apt-get from source
+  command: apt-get -y install make pkg-config autoconf libpcre3-dev libvarnishapi-dev
+
+- name: copy varnish tgz source
+  copy: src=varnish-3.0.5.tgz dest=/tmp owner=root group=root mode=0644
+
+- name: extract varnish from tgz source
+  command: chdir=/tmp tar xvzf varnish-3.0.5.tgz
+
+- name: configure varnish
+  command: chdir=/tmp/varnish-3.0.5 ./configure
+
+- name: make varnish
+  command: chdir=/tmp/varnish-3.0.5 make
+  sudo: yes
+  sudo_user: root
+
+- name: copy libvmod-cookie tgz source
+  copy: src=libvmod-cookie.tgz dest=/tmp owner=root group=root mode=0644
+
+- name: extract libvmod-cookie from tgz source
+  command: chdir=/tmp tar xvzf libvmod-cookie.tgz
+
+- name: configure libvmod-cookie
+  command: chdir=/tmp/libvmod-cookie ./configure VARNISHSRC=../varnish-3.0.5
+
+- name: make libvmod-cookie
+  command: chdir=/tmp/libvmod-cookie make
+
+- name: make install libvmod-cookie
+  command: chdir=/tmp/libvmod-cookie make install
+  sudo: yes
+  sudo_user: root
+
+- name: download varnish debian package
+  command: chdir=/tmp wget https://repo.varnish-cache.org/debian/pool/varnish-3.0/v/varnish/varnish_3.0.5-1~precise_amd64.deb
+
+- name: download libvarnishapi1 debian package
+  command: chdir=/tmp wget https://repo.varnish-cache.org/debian/pool/varnish-3.0/v/varnish/libvarnishapi1_3.0.5-1~precise_amd64.deb
+
+- name: download libvarnishapi-dev debian package
+  command: chdir=/tmp wget https://repo.varnish-cache.org/debian/pool/varnish-3.0/v/varnish/libvarnishapi-dev_3.0.5-1~precise_amd64.deb
+
+- name: install varnish debian package
+  command: chdir=/tmp dpkg -i varnish_3.0.5-1~precise_amd64.deb
+  sudo: yes
+  sudo_user: root
+
+- name: install libvarnishapi1 debian package
+  command: chdir=/tmp dpkg -i libvarnishapi1_3.0.5-1~precise_amd64.deb
+  sudo: yes
+  sudo_user: root
+
+- name: install libvarnishapi-dev debian package
+  command: chdir=/tmp dpkg -i libvarnishapi-dev_3.0.5-1~precise_amd64.deb
+  sudo: yes
+  sudo_user: root
+
+- name: copy cookie files over
+  command: cp /usr/lib/x86_64-linux-gnu/varnish/vmods/libvmod_cookie.so /usr/lib/varnish/vmods
+  sudo: yes
+  sudo_user: root
+
+- name: copy default.vcl file
+  copy: src=default.vcl dest=/etc/varnish/default.vcl owner=root group=root mode=0644
+
+- name: restart varnish
+  command: /etc/init.d/varnish restart
+  sudo: yes
+  sudo_user: root

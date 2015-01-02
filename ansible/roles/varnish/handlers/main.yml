@@ -1,0 +1,10 @@
+---
+# file: roles/varnish/handlers/main.yml
+- name: start varnish
+  service: name=varnish start=started
+
+- name: restart varnish
+  service: name=varnish state=restarted
+
+- name: reload varnish
+  service: name=varnish state=reloaded

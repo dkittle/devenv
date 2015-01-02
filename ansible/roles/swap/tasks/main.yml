@@ -1,0 +1,38 @@
+---
+
+# https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-14-04
+
+- name: add swap file of configured size
+  command: fallocate -l {{ swap_size_gb }}G /swapfile
+  sudo: yes
+  sudo_user: root
+
+- name: change permissions of swap file
+  command: chmod 600 /swapfile
+  sudo: yes
+  sudo_user: root
+
+- name: make the swap file
+  command: mkswap /swapfile
+  sudo: yes
+  sudo_user: root
+
+- name: enable the swap file
+  command: swapon /swapfile
+  sudo: yes
+  sudo_user: root
+
+- name: add swap file entry to fstab file
+  lineinfile: dest=/etc/fstab line='/swapfile   none    swap    sw    0   0'
+  sudo: yes
+  sudo_user: root
+
+- name: adjust swappiness value
+  command: sysctl vm.swappiness=10
+  sudo: yes
+  sudo_user: root
+
+- name: adjust swappiness value permanently
+  lineinfile: dest=/etc/sysctl.conf line='vm.swappiness=10'
+  sudo: yes
+  sudo_user: root

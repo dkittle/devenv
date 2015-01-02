@@ -1,0 +1,15 @@
+---
+# file: roles/common/tasks/awscli.yml
+
+# install aws cli
+- name: add awstools repo
+  apt_repository: repo='ppa:awstools-dev/awstools' state=present
+
+- name: update apt
+  apt: update_cache=yes
+
+- name: install ec2-api-tools
+  apt: pkg=ec2-api-tools state=installed
+
+- name: install s3cmd
+  apt: pkg=s3cmd state=installed

@@ -1,0 +1,6 @@
+---
+# file: roles/common/tasks/sudo.yml
+
+- name: admin in sudoers nopasswd
+  lineinfile: dest=/etc/sudoers state=present regexp='^%admin  ALL\=' line='%admin  ALL=(ALL:ALL) NOPASSWD:ALL' validate='visudo -cf %s'
+  

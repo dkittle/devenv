@@ -1,0 +1,10 @@
+[docservers]
+ec2-54-172-136-132.compute-1.amazonaws.com ansible_ssh_user=ubuntu #docserver-1
+ec2-54-173-35-209.compute-1.amazonaws.com ansible_ssh_user=ubuntu #docserver-2
+ec2-54-173-161-65.compute-1.amazonaws.com ansible_ssh_user=ubuntu #docserver-3
+
+[pentaho]
+ec2-54-162-181-185.compute-1.amazonaws.com ansible_ssh_user=ubuntu
+
+[loadbalancer]
+ec2-54-163-120-63.compute-1.amazonaws.com ansible_ssh_user=ubuntu

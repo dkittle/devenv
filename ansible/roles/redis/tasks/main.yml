@@ -1,0 +1,10 @@
+---
+
+- name: install redis server
+  apt: pkg=redis-server state=installed
+
+- name: update redis config file
+  replace: dest=/etc/redis/redis.conf regexp='bind 127.0.0.1' replace='bind *'
+
+- name: restart redis
+  service: name=redis-server state=restarted

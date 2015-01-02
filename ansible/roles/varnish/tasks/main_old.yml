@@ -1,0 +1,25 @@
+---
+- name: install varnish signing key
+  apt_key: url=http://repo.varnish-cache.org/debian/GPG-key.txt state=present
+
+- name: add varnish 3.0 repo
+  apt_repository: repo="deb http://repo.varnish-cache.org/ubuntu/ precise varnish-3.0"
+
+- name: update apt
+  apt: update_cache=yes
+
+- name: install varnish
+  apt: pkg=varnish state=installed
+
+- name: restart varnish
+  service: name=varnish state=restarted
+
+- name: copy default.vcl file
+  copy: src=default.vcl dest=/etc/varnish/default.vcl owner=root group=root mode=0644
+
+- name: copy varnish file
+  copy: src=varnish dest=/etc/default/varnish owner=root group=root mode=0644
+
+- name: restart varnish
+  service: name=varnish state=restarted
+
