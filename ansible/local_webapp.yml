@@ -3,11 +3,11 @@
   sudo: yes
   roles:
     - common
-#    - swap
-#    - java
+    - swap
+    - java
 ##    - tomcat
 ##    - rabbitmq
-#    - elasticsearch
+    - elasticsearch
     - mysql
     - redis
   vars:
