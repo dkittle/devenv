@@ -4,32 +4,38 @@
   command: /usr/bin/openssl rand -base64 16
   register: mysql_root_passwd
 
-- name: create oka database
-  mysql_db: name=bobdata state=present
-
 - name: update mysql root passwd
   mysql_user: name=root host={{ item }} password={{ mysql_root_passwd.stdout }} 
   with_items:
     - "{{ ansible_hostname }}"
     - 127.0.0.1
-    - 192.168.56.55
+    - '%'
     - ::1
     - localhost
 
-- name: create oka user
-  mysql_user: name=oka host={{ item }} password=oka priv=oka.*:ALL state=present
-  with_items:
-    - "{{ ansible_hostname }}"
-    - 127.0.0.1
-    - 192.168.56.55
-    - ::1
-    - localhost
-
-- name: copy user my.cnf file with root passwd credentials
+- name: copy root user my.cnf file with passwd credentials
   template: src=dotmy.cnf.j2 dest=/root/.my.cnf owner=root group=root mode=0600
+
+- name: copy our default my.cnf file
+  template: src=my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode=0644
 
 - name: delete anonymous mysql user
   mysql_user: name="" state=absent
 
 - name: remove mysql test database
   mysql_db: name=test state=absent
+
+- name: create oka database
+  mysql_db: name=oka state=present
+
+- name: create oka user
+  mysql_user: name=oka host={{ item }} password=oka priv=oka.*:ALL state=present
+  with_items:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - '%'
+    - ::1
+    - localhost
+
+- name: bounce mysql
+  service: name=mysql state=restarted

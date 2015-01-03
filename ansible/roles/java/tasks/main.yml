@@ -1,6 +1,13 @@
 ---
-- name: add java repo
-  apt_repository: repo='ppa:webupd8team/java' state=present
+#- name add java repos
+- name: adding Java repository
+  apt_repository: repo='deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' state=present
+
+- name: adding Java source repository
+  apt_repository: repo='deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main' state=present
+
+- name: adding Java key
+  apt_key: keyserver=keyserver.ubuntu.com id=EEA14886
 
 - name: update apt
   apt: update_cache=yes
@@ -10,3 +17,6 @@
 
 - name: install oracle-java7
   apt: pkg=oracle-java7-installer state=latest update-cache=yes force=yes
+
+#- name: install oracle-java8
+#  apt: pkg=oracle-java8-installer state=latest update-cache=yes force=yes

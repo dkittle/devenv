@@ -1,7 +1,8 @@
 ---
 # file: roles/common/tasks/users.yml
 
-# don
+- group: name=admin state=present
+
 - name: add user Don
   user: name=don comment="Don Kittle" groups=admin,staff,root append=yes shell=/bin/bash
 - name: add authorized key Don

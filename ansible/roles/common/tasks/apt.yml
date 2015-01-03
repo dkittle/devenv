@@ -2,4 +2,4 @@
 - name: upgrade all packages
   apt: update_cache=yes
 
-- apt: upgrade=dist
+#- apt: upgrade=dist

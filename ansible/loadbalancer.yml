@@ -1,6 +1,0 @@
----
-- hosts: all
-  sudo: yes
-  roles:
-    - common
-    - varnish
