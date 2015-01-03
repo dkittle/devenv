@@ -5,8 +5,6 @@
     - common
     - swap
     - java
-##    - tomcat
-##    - rabbitmq
     - elasticsearch
     - mysql
     - redis
