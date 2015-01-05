@@ -1,0 +1,9 @@
+---
+ntp_server: "pool.ntp.org"
+mysql:
+  port: 3306
+  bind_address: 0.0.0.0
+  oka_database: oka_development
+nginx:
+  port: 8008
+  workers: 4
