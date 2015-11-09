@@ -15,13 +15,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     config.vm.network :private_network, ip: "192.168.16.16"
-    config.vm.network :forwarded_port, guest: 8080, host: 8080 # Tomcat Server
+#    config.vm.network :forwarded_port, guest: 8080, host: 8080 # Tomcat Server
     config.vm.network :forwarded_port, guest: 3306, host: 3306 # MySQL
     config.vm.network :forwarded_port, guest: 9200, host: 9200 # Elastic Search
     config.vm.network :forwarded_port, guest: 9300, host: 9300 # Elastic Search
-    config.vm.network :forwarded_port, guest: 15672, host: 15000 # RabbitMQ Management Console
-    config.vm.network :forwarded_port, guest: 5672, host: 5672 # RabbitMQ amqp primary
-    config.vm.network :forwarded_port, guest: 5673, host: 5673 # RabbitMQ amqp secondary
+#    config.vm.network :forwarded_port, guest: 15672, host: 15000 # RabbitMQ Management Console
+#    config.vm.network :forwarded_port, guest: 5672, host: 5672 # RabbitMQ amqp primary
+#    config.vm.network :forwarded_port, guest: 5673, host: 5673 # RabbitMQ amqp secondary
     config.vm.network :forwarded_port, guest: 6379, host: 6379 # Redis
 
     config.vm.provision "ansible" do |ansible|

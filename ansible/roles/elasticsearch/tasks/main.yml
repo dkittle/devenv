@@ -23,4 +23,14 @@
 - name: restart elasticsearch
   service: name=elasticsearch state=restarted
 
-- shell: /usr/share/elasticsearch/bin/plugin -i mobz/elasticsearch-head chdir=/usr/share/elasticsearch/bin/
+- name: Install ES Head
+  command: /usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head
+
+- name: Install ES Paramedic
+  command: /usr/share/elasticsearch/bin/plugin -install karmi/elasticsearch-paramedic
+
+- name: Install ES BigDesk
+  command: /usr/share/elasticsearch/bin/plugin -install lukas-vlcek/bigdesk
+
+- name: Install ES Inqusitor
+  command: /usr/share/elasticsearch/bin/plugin -install polyfractal/elasticsearch-inquisitor
